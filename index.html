@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Minimal CAGR</title>
+    <title>Growth Calculator</title>
+    <link rel="icon" type="image/png" href="icon.png">
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
@@ -42,7 +44,7 @@
             </div>
 
             <div class="md:col-span-2 space-y-12">
-                <div class="bg-blue-600 text-white p-8 rounded-none">
+                <div class="bg-blue-600 text-white p-10 rounded-[2rem]">
                     <p class="text-[10px] font-bold uppercase tracking-[0.2em] opacity-70">Total Value</p>
                     <h2 id="totalResult" class="text-6xl font-black tracking-tight mb-6">0€</h2>
                     <div class="flex gap-8 border-t border-blue-500 pt-6">
@@ -108,7 +110,10 @@
                 options: {
                     responsive: true, maintainAspectRatio: false,
                     plugins: { legend: { display: false } },
-                    scales: { x: { grid: { display: false }, border: { dash: [5, 5] } }, y: { grid: { color: '#f8fafc' }, border: { display: false } } }
+                    scales: { 
+                        x: { grid: { display: false }, border: { dash: [5, 5] } }, 
+                        y: { grid: { color: '#f8fafc' }, border: { display: false } } 
+                    }
                 }
             });
         }
