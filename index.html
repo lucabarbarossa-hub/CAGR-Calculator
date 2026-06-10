@@ -11,15 +11,15 @@
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;700;900&display=swap');
         body { font-family: 'Inter', sans-serif; }
         
-        /* Container for fluid text */
-        .result-container {
-            container-type: inline-size;
-            container-name: result-box;
+        /* The text will scale between 2rem and 5rem, 
+           but use 8% of the container width as its primary size */
+        .fluid-text {
+            font-size: clamp(2rem, 8cqw, 5rem);
+            line-height: 1;
         }
 
-        /* The text shrinks automatically based on the container width */
-        .fluid-text {
-            font-size: 10cqw; 
+        .result-container {
+            container-type: inline-size;
         }
 
         input[type=range]::-webkit-slider-thumb {
@@ -144,4 +144,3 @@
     </script>
 </body>
 </html>
-
