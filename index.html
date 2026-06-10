@@ -11,13 +11,12 @@
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;700;900&display=swap');
         body { font-family: 'Inter', sans-serif; }
         
-        /* Blue cursor styling */
         input[type=range]::-webkit-slider-thumb {
             -webkit-appearance: none;
             height: 20px;
             width: 20px;
             border-radius: 50%;
-            background: #2563eb; /* Blue color */
+            background: #2563eb;
             cursor: pointer;
             border: 2px solid white;
             box-shadow: 0 0 0 2px #2563eb;
@@ -32,7 +31,6 @@
         </header>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
-            <!-- Controls -->
             <div class="md:col-span-1 space-y-8">
                 <div>
                     <label class="text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em]">Initial Capital</label>
@@ -55,15 +53,14 @@
                 </div>
             </div>
 
-            <!-- Stats & Graph -->
             <div class="md:col-span-2 space-y-12">
-                <div class="bg-blue-600 text-white p-10 rounded-[2rem]">
+                <div class="bg-blue-600 text-white p-10 rounded-[2rem] overflow-hidden">
                     <p class="text-[10px] font-bold uppercase tracking-[0.2em] opacity-70">Total Value</p>
-                    <h2 id="totalResult" class="text-6xl font-black tracking-tight mb-6">0€</h2>
+                    <h2 id="totalResult" class="text-6xl font-black tracking-tight mb-6 transition-all duration-300 whitespace-nowrap">0€</h2>
                     <div class="flex gap-8 border-t border-blue-500 pt-6">
                         <div>
                             <p class="text-[10px] font-bold uppercase tracking-[0.2em] opacity-70">Pure Interest</p>
-                            <p id="interestResult" class="text-2xl font-bold">0€</p>
+                            <p id="interestResult" class="text-2xl font-bold truncate">0€</p>
                         </div>
                     </div>
                 </div>
@@ -99,7 +96,15 @@
                 data.push(Math.round(balance));
             }
 
-            document.getElementById('totalResult').innerText = Math.round(balance).toLocaleString() + '€';
+            const totalEl = document.getElementById('totalResult');
+            const result = Math.round(balance).toLocaleString() + '€';
+            totalEl.innerText = result;
+            
+            // Dynamic Font Resizing Logic
+            totalEl.style.fontSize = '3.75rem'; // Reset to 6xl
+            if (result.length > 10) totalEl.style.fontSize = '2.5rem';
+            if (result.length > 15) totalEl.style.fontSize = '1.75rem';
+
             document.getElementById('interestResult').innerText = Math.round(balance - totalInvested).toLocaleString() + '€';
             updateChart(labels, data);
         }
